@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { categoryService } from "../services/category.service";
-import { CategoryDTO } from "../dtos/category.dto";
+import type { CategoryDTO } from "../dtos/category.dto";
 
 export function useCategory() {
     return useQuery({
@@ -19,7 +19,7 @@ export function useCategoryById(id: string) {
 
 export function userCreateCategory(){
     return useMutation<CategoryDTO, Error, Omit<CategoryDTO, 'id'>>({
-        mutationFn: (category: Omit<CategoryDTO, 'id'>) => categoryService.create(category);
+        mutationFn: (category: Omit<CategoryDTO, 'id'>) => categoryService.create(category),
     });
 }
 
