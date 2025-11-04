@@ -3,6 +3,7 @@ import { CategoryLayout } from "./cases/categories/components/category-layout"
 import { CategoryForm } from "./cases/categories/components/category-form"
 import { BrandLayout } from "./cases/brands/components/brand-layout"
 import { BrandForm } from "./cases/brands/components/brand-form"
+import { ToastContainer } from "react-toastify"
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           </Route>
         </Routes>
       </main>
+      <ToastContainer />
     </div>
   )
 }

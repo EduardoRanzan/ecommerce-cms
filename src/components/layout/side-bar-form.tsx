@@ -10,17 +10,23 @@ import {
 import { Button } from "../ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ReactNode } from "react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { DeleteIcon, TrashIcon } from "lucide-react";
 
 type SideBarFormProps = {
     title: string;
     children: ReactNode;
-    onSave: () => void;
+    onSave?: () => void;
+    isLoading: boolean;
+    onDelete?: () => void;
 }
 
 export function SideBarForm({
     title,
     children,
-    onSave
+    onSave,
+    isLoading,
+    onDelete
 } : SideBarFormProps) {
     const navigate = useNavigate();
     const location = useLocation();
@@ -42,23 +48,42 @@ export function SideBarForm({
                     Preencha os campos abaixo e clique em Salvar.
                 </SheetDescription>
             </SheetHeader>
-
-            {children}
+            <div className="px-6">
+                {children}
+            </div>
 
             <SheetFooter>
-                <div className="flex flex-row">
+                <div className="flex flex-row gap-2">
 
                     <Button
-                        onClick={onSave}>
+                        type="button"
+                        onClick={onSave}
+                        disabled={isLoading}
+                    >
                         Salvar
                     </Button>
-
                     <SheetClose asChild>
-                        <Button variant="outline" className="ml-2">
+                        <Button variant="outline" disabled={isLoading}>
                             Cancelar
                         </Button>
                     </SheetClose>
 
+                    {onDelete &&
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button
+                                    onClick={onDelete}
+                                    disabled={isLoading}
+                                    variant="destructive"
+                                    >
+                                    <TrashIcon />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Remover Registro</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    }
                 </div>
             </SheetFooter>
         </SheetContent>
