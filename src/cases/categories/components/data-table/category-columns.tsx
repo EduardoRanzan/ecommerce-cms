@@ -12,8 +12,8 @@ export const categoryColumns: ColumnDef<CategoryDTO>[] = [
     header: "Nome da Categoria",
   },
   {
+    enableHiding: false,
     accessorKey: "actions",
-    enableHiding: true,
     cell: ({ row }) => {
       const category = row.original;
       return (
