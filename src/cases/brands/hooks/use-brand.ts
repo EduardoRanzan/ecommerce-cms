@@ -4,6 +4,7 @@ import type { BrandDTO } from "../dtos/brand.dto";
 import { toast } from "react-toastify";
 
 export function useBrand () {
+    console.log('aqui?')
     return useQuery({
         queryKey: ['brands'],
         queryFn: () => brandService.list(),
@@ -24,6 +25,7 @@ export function useCreateBrand(){
     return useMutation<BrandDTO, Error, Omit<BrandDTO, 'id'>>({
         mutationFn: (brand: Omit<BrandDTO, 'id'>) => brandService.create(brand),
         onSuccess: () => {
+            console.log('aquiiii')
             queryClient.invalidateQueries({ queryKey: ['brands'] });
             toast.success('Marca criada com sucesso!');
         }, onError: (error: Error) => {

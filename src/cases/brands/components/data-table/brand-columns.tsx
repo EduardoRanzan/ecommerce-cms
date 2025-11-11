@@ -9,7 +9,7 @@ export const brandColumns: ColumnDef<BrandDTO>[] = [
   },
   {
     accessorKey: "name",
-    header: "Nome da Categoria",
+    header: "Nome da Marca",
   },
   {
     accessorKey: "actions",

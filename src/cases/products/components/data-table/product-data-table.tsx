@@ -1,6 +1,7 @@
 import { DataTable } from "@/components/ui/data-table";
 import { productColumns } from "./product-columns";
 import { useProducts } from "../../hooks/use-product";
+import LoadingScreen from "@/components/layout/loading-screen";
 
 export function ProductDataTable() {
 
@@ -9,7 +10,7 @@ export function ProductDataTable() {
     return (
         <div>
             { isLoading ? (
-                <p>Carregando...</p>
+                <LoadingScreen />
             ) : (
                 <DataTable columns={productColumns} data={products!} />
             )}

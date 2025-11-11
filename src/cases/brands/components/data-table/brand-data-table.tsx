@@ -1,6 +1,7 @@
 import { DataTable } from "@/components/ui/data-table";
 import { brandColumns } from "./brand-columns";
 import { useBrand } from "../../hooks/use-brand";
+import LoadingScreen from "@/components/layout/loading-screen";
 
 export function BrandDataTable() {
 
@@ -9,7 +10,7 @@ export function BrandDataTable() {
     return(
         <div>
             {isLoading ? (
-                <p>Carregando</p>
+                <LoadingScreen />
             ) : (
                 <DataTable columns={brandColumns} data={brands!}/>
             )}

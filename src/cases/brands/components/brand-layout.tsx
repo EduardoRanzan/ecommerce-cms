@@ -15,7 +15,7 @@ export function BrandLayout() {
     return (
         <div className="p-4">
 
-            <BreadCrumb title="Brand"/>    
+            <BreadCrumb title="Marca"/>    
 
             <div className="flex flex-col gap-4 py-4">
                 <div className="flex flex-row justify-end gap-4">
